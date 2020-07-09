@@ -4,3 +4,5 @@ module.exports.home = function(req, res){
     return res.end(`<h1>express is up and running</h1>`)
     //after exporting this we need to acces this in routes afteralll we have created it for there 
 }
+
+//here we can create multiple url situation which we can handle on rouutes index

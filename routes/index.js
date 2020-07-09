@@ -5,6 +5,7 @@ const express = require(`express`);
 const router = express.Router();
 console.log(`router is loaded`);
 
+// after exporting from controller
 // so here we want to access the controller which which i have recently exported 
 //why?? because here we have to redirect it on that url to that action then only that action wil be completed  and we are acuring that where it is kept on next line and below that the action part to link on the link
 const homeController = require(`../conrtrollers/home_controller`);
