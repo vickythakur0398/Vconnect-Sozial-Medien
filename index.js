@@ -4,7 +4,8 @@ const express = require(`express`);
 const app = express();
 const port = 8000;
 
-
+//...2 after creating the router we have exported that from there now for any url we are routing it to there and it bydeafault fteches index so if you want to remove /index u can
+app.use(`/`, require(`./routes/index`) )
 
 
 //1.1 shooting up the server
