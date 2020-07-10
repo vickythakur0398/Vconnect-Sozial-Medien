@@ -13,6 +13,7 @@ router.get('/',homeController.home);
 
 //here i am handling the users if request come with localhost/users/x it send it to to user.js route file which will handle from there beacuse koi bhi request aati main index se to ise me aati h
 router.use('/users', require(`./users`));
+//for other routes u can name just from here
 
 
 //we need to export it to be available to index.js once we exported this we need to tell that now all the routes i.e app.get qpp.use will be done via this module
