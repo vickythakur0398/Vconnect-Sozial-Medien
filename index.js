@@ -4,6 +4,12 @@ const express = require(`express`);
 const app = express();
 const port = 8000;
 
+//....5 we have have to deal with assets so we have to mention it path where it is
+app.use(express.static(`./assets`));
+
+
+
+
 //...4 now we are making the layout so we have installed npm install express-ejs-layouts so we have to acquire it and use it 
 //we are using it before routes because in routes we are rendering on url so it is obvious we have to use it before that.\
 const expressLayouts = require(`express-ejs-layouts`);
