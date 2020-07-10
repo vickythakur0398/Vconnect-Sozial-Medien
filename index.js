@@ -4,6 +4,18 @@ const express = require(`express`);
 const app = express();
 const port = 8000;
 
+//...4 now we are making the layout so we have installed npm install express-ejs-layouts so we have to acquire it and use it 
+//we are using it before routes because in routes we are rendering on url so it is obvious we have to use it before that.\
+const expressLayouts = require(`express-ejs-layouts`);
+app.use(expressLayouts);
+
+
+
+
+
+
+
+
 //...2 after creating the router we have exported that from there now for any url we are routing it to there and it bydeafault fetches index so if you want to remove /index u can
 //now all the routes will be controlled from routes  
 app.use(`/`, require(`./routes/index`) )

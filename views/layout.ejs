@@ -1,0 +1,27 @@
+<!-- this is we are making for layouts and we will make a common layout for all in this website but later i will update it to different layouts if i got time but it is not priority -->
+
+
+<html>
+    <head>
+        <title><%= title %></title>
+    </head>
+
+    <body>
+
+        <%- include('_header'); %>
+<!-- what here is happening is that on that route where it is taking action send to that controller and then from there it is sent to views and there body based on the router action will be taken here so in this case we have all the section we have to only update body in the user_profile of views thats it same for other  -->
+            <%- body %>
+          
+          
+         <%- include('_footer'); %>
+
+
+
+
+
+
+
+
+
+    </body>
+</html>
