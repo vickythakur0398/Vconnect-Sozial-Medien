@@ -16,6 +16,12 @@ const expressLayouts = require(`express-ejs-layouts`);
 app.use(expressLayouts);
 
 
+//...6 here we want that our link tag of individual pages must not appear in the body of that we want whenever this express ejs layout is rendering our layout.ejs(name of that layout) with the code we want our link set up in the head of that layout thats what we are doing here!!!
+//extract styles and script from the sub pages into the layout after this step we need to go to layout.ejs where our layout file is and wherever we want to render this extracted link put that there <%- styles%> in head or script in body
+app.set('layout extractStyles' , true);
+app.set('layout extractScripts' , true);
+
+
 
 
 

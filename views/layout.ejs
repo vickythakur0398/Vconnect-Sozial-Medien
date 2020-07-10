@@ -4,7 +4,10 @@
 <html>
     <head>
         <title><%= title %></title>
+        
         <link rel="stylesheet" href="/css/layout.css">
+        <!-- adding extracted style from main index to avoid the style tag appearing in the body -->
+        <%- style %>
     </head>
 
     <body>
@@ -17,11 +20,11 @@
          <%- include('_footer'); %>
 
 
+        <%- script %>
 
 
 
-
-
+           
 
 
     </body>
