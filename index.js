@@ -5,7 +5,7 @@ const app = express();
 const port = 8000;
 
 //...2 after creating the router we have exported that from there now for any url we are routing it to there and it bydeafault fetches index so if you want to remove /index u can
-//now all the routes will be controlled from routes 
+//now all the routes will be controlled from routes  
 app.use(`/`, require(`./routes/index`) )
 
 
