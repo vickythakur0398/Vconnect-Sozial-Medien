@@ -3,7 +3,8 @@ const express = require(`express`);
 //taking functionality of express in this app
 const app = express();
 const port = 8000;
-
+//..6 here we are acquiring the database which is already created in config 
+const db = require('./config/mongoose');
 //....5 we have have to deal with assets so we have to mention it path where it is
 app.use(express.static(`./assets`));
 
