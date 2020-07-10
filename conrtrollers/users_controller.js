@@ -5,3 +5,8 @@ module.exports.profile = function(req, res){
     //now this profile is ready to be accesed from the router i.e this action is returned on this url so now i am creating new route file for users okk!!!!!
 
 }
+
+
+module.exports.post = function(req, res){
+    res.end(`<h1>post section</h1>`)
+}
