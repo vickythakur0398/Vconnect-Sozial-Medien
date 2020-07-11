@@ -11,6 +11,13 @@ app.use(express.static(`./assets`));
 
 
 
+//..6 so after insatlling the cookie parser to read and write the cookies we to acquire it and we nee dto tell the app to use it
+const cookieParser = require(`cookie-parser`);
+app.use(cookieParser());
+
+// this is to reading  through the post request as we do
+app.use(express.urlencoded());
+
 //...4 now we are making the layout so we have installed npm install express-ejs-layouts so we have to acquire it and use it 
 //we are using it before routes because in routes we are rendering on url so it is obvious we have to use it before that.\
 const expressLayouts = require(`express-ejs-layouts`);
@@ -50,3 +57,9 @@ app.listen(port, function(err){
 
     console.log(`wooh!! server is running fine on port: ${port}`);
 })
+
+
+
+
+
+// bolo chal nhi rha ye restart krke dekha? vs code yes nhi

@@ -18,4 +18,3 @@ module.exports = db;
 
 
 
-// ho gaya ys tha error  hwaaaha  dkou=dbkil:  D:IKh gya  :: 2  the ye  thnyxes 
