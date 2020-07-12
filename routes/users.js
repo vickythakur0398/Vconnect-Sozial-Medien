@@ -9,8 +9,11 @@ const passport = require('passport');
 //here we have made it to acess the user_controller which we have made
 //requiring path
 const usersControllers = require(`../conrtrollers/users_controller`);
+const { checkAuthentication } = require('../config/passpost-local-strategy');
 //taking action now
-router.get('/profile', usersControllers.profile);
+//now we are changing it act to passport 
+//so if user is not signed in checkAuthentication function in our passport
+router.get('/profile',passport.checkAuthentication, usersControllers.profile);
 
 //till yet we havent defined what happen when /user/x will happen so we want if any request with /users come it goes to the user.js of router which will handle all of that via user controller this we have to do that in main index of router becasue main index.js is libked with that i.e whenever any request come with url it is sent there and we want if url with /user/x will come than it send it here
 

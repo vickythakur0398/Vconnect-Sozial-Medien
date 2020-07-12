@@ -19,7 +19,7 @@ passport.use(new LocalStrategy({
         User.findOne({email:email}, function(err,user){
             //if error in finding user
             if(err){
-                console.log('error in finding user >>>>> passport')
+                console.log('error in finding user >>>>> passport');
                 //done can takes 2 arguments also
                 return done(err);
 
@@ -60,6 +60,31 @@ passport.deserializeUser(function(id, done){
         return done(null,user);
     });
 });
+
+//now we will send data of the current user to the views
+//check if user is authenticated 
+passport.checkAuthentication = function(req, res, next){
+    //if request is autheticated or not 
+    // this detect user is sign in or not if not signed in no need to show user info on view redirected to sign in and if user is signed in pass the request to next function i.e (controller's action)
+    if (req.isAuthenticated()){
+
+        return next();
+        
+    }
+ 
+    //if the user is not signed in 
+    return res.redirect('/users/sign-in')
+}
+
+//once the user is sign in we have to set the views for user
+passport.setAuthenticatedUser = function(req, res, next){
+    if(req.isAuthenticated()){
+        //so wheenver the user is signed in the details are available in the user because we have used user model
+        //req.user contains the current signed in user form the session cookie and we are just sending this to the local for the views then we have to go to route user there only we can send 
+        res.locals.user = req.user;
+    }
+    next();
+}
 
 
 module.exports  = passport;

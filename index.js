@@ -53,7 +53,11 @@ app.use(session({
     name: 'vconnect',
     // we have to change the secret b4 deployment in production mode
     secret: 'blahsomething',
+    //when ever there is a request which is not i nitialised i.e session is not started i.e user is not logged in so we dont need to store extra data in cokkies thats why we set it to false
+    saveUninitialized:false,
+    //in this case if identity is established & some sort of data is presnt in the session data so we do not want to save it again and again
     resave: false,
+    
     //this is for the max age upto which cookie remains live after which cookie expire
     cookie:{
         // it is in millisecionds
@@ -64,12 +68,13 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-
+//..8 so when ever app is getting initialised passport is also getting initialised and this function is called and when it is called it will check whether the session cookie is present or not
+app.use(passport.setAuthenticatedUser);
 
 //so we haev to route after this becasue it is using routes if will use early changes wont be done and error is thrown
 //...2 after creating the router we have exported that from there now for any url we are routing it to there and it bydeafault fetches index so if you want to remove /index u can
 //now all the routes will be controlled from routes  
-app.use(`/`, require(`./routes/index`) )
+app.use(`/`, require("./routes/index"));
 
 //1.1 shooting up the server
 app.listen(port, function(err){
