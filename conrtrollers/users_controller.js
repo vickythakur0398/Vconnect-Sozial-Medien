@@ -13,7 +13,7 @@ module.exports.profile = function(req, res){
 };
 
 module.exports.post = function(req, res){
-    res.end(`<h1>post section</h1>`)
+    res.end(`<h1>post section</h1>`);
 }
 //render the sign up page
 module.exports.sign_up = function(req, res){
