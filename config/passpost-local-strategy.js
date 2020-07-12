@@ -4,7 +4,7 @@ const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 
 const User = require('../models/user');
-const user = require('../models/user');
+
 
 //authentication we are doing via passport 
 //we need to acquire user so we need to tell the passport to use the LocalStrategy which we have created
@@ -16,7 +16,7 @@ passport.use(new LocalStrategy({
     // here done is a funcn and inbuilt to passport and automatically called and is callback function and we can name it anything
     function(email, password, done){
         //find user and establish the identity fot this we have to get user 
-        User.findById({email:email}, function(err,user){
+        User.findOne({email:email}, function(err,user){
             //if error in finding user
             if(err){
                 console.log('error in finding user >>>>> passport')
@@ -43,7 +43,7 @@ passport.use(new LocalStrategy({
 // we need a serialise user function and deserialise user function serialising is when in manual authentication we are accesing the user_id to store in the cookie and then the cookie is sent back to the server and we need to establish the identity of that user from the database that id is to deseralise
 
 //serialising the user to decide which key is to be kept in th cookies
-//this automatically encrypts the cookie sent it to the browser
+//this automatically encrypts the cookie sent it to the browser and encryption is not done by the passport we have to install a library i.e expres-session fo that and we have done that in main index.js
 passport.serializeUser(function(user, done){
     done(null, user.id);
 })
@@ -51,7 +51,7 @@ passport.serializeUser(function(user, done){
 //dserialising the user from the key in the cookies
 // so here broweser make the request so we need to deserialise it and find the user again
 passport.deserializeUser(function(id, done){
-    user.findById(function(err,user){
+    User.findById(id,function(err,user){
         if(err){
             console.log('error in finding user from cookie >>> passport');
             return done(err);
