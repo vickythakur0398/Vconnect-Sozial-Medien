@@ -3,3 +3,12 @@
 
 <link rel="stylesheet" href="/css/user_profile.css"
 <h1>Vconnect!! / <%=title %></h1>
+
+
+<!-- so by doing this as we have already updated in the user controller in profile now every user name will appear if they are having their cookie-->
+<p>Name: <%= user.name%> </p>
+<p>Name: <%= user.email%> </p>
+
+
+
+<a href="/users/sign-out">sign-out</a>

@@ -21,6 +21,11 @@ router.get(`/sign-in`, usersControllers.sign_in);
 //post beacsuse we are sending into the database
 router.post('/create', usersControllers.create);
 
+router.post('/create-session', usersControllers.createSession);
+
+
+router.get('/sign-out', usersControllers.signout);
+
 module.exports = router;
 
 
