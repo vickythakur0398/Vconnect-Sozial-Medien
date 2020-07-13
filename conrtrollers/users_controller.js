@@ -31,7 +31,8 @@ module.exports.sign_up = function(req, res){
 }
 //render the sign in page
 module.exports.sign_in = function(req, res){
-    //if user is authenticated i.e sign in and we want to go to sign in page ot will be redirected to profile
+    //if user is authenticated i.e sign in and we want to go to sign in page ot will be redirected to profile ok
+    
     if(req.isAuthenticated()){
         return res.redirect('/users/profile');
     }
