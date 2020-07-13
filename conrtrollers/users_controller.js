@@ -1,5 +1,6 @@
 //getting this to get data from databse
 const User = require('../models/user');
+const user = require('../models/user');
 //checking 
 
 
@@ -20,14 +21,24 @@ module.exports.post = function(req, res){
 }
 //render the sign up page
 module.exports.sign_up = function(req, res){
+    //if user is authenticated means sign in and still he tries to go to sign-up then he will pe redirected to users/profile not sign up
+    if(req.isAuthenticated()){
+       return res.redirect('/users/profile');
+    }
    return res.render('users_sign_up',{
        title: "vconnect!! | sign-up"
    }); 
 }
 //render the sign in page
 module.exports.sign_in = function(req, res){
+    //if user is authenticated i.e sign in and we want to go to sign in page ot will be redirected to profile
+    if(req.isAuthenticated()){
+        return res.redirect('/users/profile');
+    }
+
+
     return res.render ('users_sign_in',{
-        title: "vconnec!! | sign-in"
+        title: "vconnect!! | sign-in"
     })
 }
 

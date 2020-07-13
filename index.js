@@ -16,6 +16,11 @@ const passport = require('passport');
 const PassportLocal= require('./config/passpost-local-strategy');
 
 
+//..9 so now everytime we start our server or make changes to our code our user get logout but we dont want that to happen so one way to avoid that is to store the session cookie of a user in other place so we have installed a libray fo that i.e npm install connect-mongo
+//now we are acquiring it and unlike other library it requires a argument here that is session bcs we want to store the session data  and then we have to stpre that in app.use session
+const MongoStore = require('connect-mongo')(session);
+
+ 
 //..6 so after insatlling the cookie parser to read and write the cookies we to acquire it and we nee dto tell the app to use it
 const cookieParser = require(`cookie-parser`);
 app.use(cookieParser());
@@ -48,6 +53,7 @@ app.set('view engine' ,'ejs');
 app.set('views', './views');
 
 
+//...9.1 here we are using the connect-mongo in store
 //7.1 setting the middle ware for session cookies
 app.use(session({
     name: 'vconnect',
@@ -62,7 +68,20 @@ app.use(session({
     cookie:{
         // it is in millisecionds
         maxAge: (1000 * 60 * 100)
-    }
+    },
+    //here we have used the 9.1
+    store: new MongoStore(
+        {
+            //we are setting up the mongoose connection so it interacts with mongoose
+            //here db bcs we have exported this db from mongoose.connection from mongoose config
+            mongooseConnection: db,
+            autoRemove:'disabled'
+        },
+        //so in case we are not connected or connected so a callbackfuncn for that
+        function(err){
+            console.log(err || 'connect-mongo library setup ok');
+        }
+    )
 }));
 //7.2
 app.use(passport.initialize());
